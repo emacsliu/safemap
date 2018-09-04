@@ -1,0 +1,2 @@
+# safemap
+golang safemap library
