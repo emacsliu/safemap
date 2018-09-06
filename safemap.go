@@ -33,7 +33,7 @@ func (m *SafeMap) GetObject(key string) (interface{}, bool) {
 }
 
 func (m *SafeMap) SetObject(key string, obj interface{}) error {
-	if m.invalidKey(key) {
+	if invalidKey(key) {
 		return errors.New("invalid key")
 	}
 	m.Lock()
@@ -43,7 +43,7 @@ func (m *SafeMap) SetObject(key string, obj interface{}) error {
 }
 
 func (m *SafeMap) RemoveObject(key string) error {
-	if m.invalidKey(key) {
+	if invalidKey(key) {
 		return errors.New("invalid key")
 	}
 	m.Lock()
@@ -72,6 +72,6 @@ func (m *SafeMap) Keys() []string {
 	return names
 }
 
-func (s *SafeMap) invalidKey(key string) bool {
+func invalidKey(key string) bool {
 	return len(key) <= 0
 }
